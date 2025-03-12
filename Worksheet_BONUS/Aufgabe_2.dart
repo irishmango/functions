@@ -13,7 +13,7 @@ void printGrades(List<double> grades) {
 // "Der Durchschnitt ist: 2.0"
 void calculateAndPrintAverage(List<double> grades) {
   if (grades.isEmpty) {
-    print('Keine Noten vorhanden.');
+    print('Grades-Liste ist leer.');
     return;
   } else {
     double gradesSum = 0;
