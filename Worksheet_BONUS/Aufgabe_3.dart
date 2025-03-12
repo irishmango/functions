@@ -8,40 +8,83 @@ void findAndPrintExtreme(List<int> numbers) {
     return;
   }
 
-  int min = numbers[0];
+  // Initialise both min and max as the same position in the list (To start with)
+  int min = numbers[0]; 
   int max = numbers[0];
-  int minIndex = 0;
-  int maxIndex = 0;
+  int indexOfMin = 0; 
+  int indexOfMax = 0;
 
   for (int i = 0; i < numbers.length; i++) {
     if (numbers[i] < min) {
       min = numbers[i];
-      minIndex = i;
+      indexOfMin = i;
     }
     else if (numbers[i] > max) {
       max = numbers[i];
-      maxIndex = i;
+      indexOfMax = i;
     }
   }
 
-  print("Der kleinste Zahl ist: $min. \nSeine Position ist: ${minIndex + 1}");
-  print("Der größste Zahl ist: $max. \nSeine Position ist: ${maxIndex + 1}");
+  print("Der kleinste Zahl ist: $min. Seine Position ist: ${indexOfMin + 1}");
+  print("Der größste Zahl ist: $max. Seine Position ist: ${indexOfMax + 1}");
 }
 
 
+// Zählt und gibt aus:
+// - Wie viele gerade/ungerade Zahlen
+// - Wie viele positive/negative Zahlen
 void printNumberTypes(List<int> numbers) {
-  // Zählt und gibt aus:
-  // - Wie viele gerade/ungerade Zahlen
-  // - Wie viele positive/negative Zahlen
+  int numGerade = 0;
+  int numUngerade = 0;
+  int numPositiv = 0;
+  int numNegativ = 0;
+
+  for (int i = 0; i < numbers.length; i++) {
+    if (numbers[i] % 2 == 0) {
+      numGerade++;
+    } else {
+      numUngerade++;
+    }
+  }
+
+  for (int i = 0; i < numbers.length; i++) {
+    if (numbers[i] >= 0) {
+      numPositiv++;
+    } else {
+      numNegativ++;
+    } 
+  }
+  print("Es gibt $numPositiv positive Zahlen und $numNegativ negative Zahlen");
+  print("Es gibt $numGerade gerade Zahlen und $numUngerade ungerade Zahlen");
 }
 
+// Gibt eine einfache Häufigkeitsverteilung aus
+// z.B. wie oft kommt jede Zahl vor
 void printDistribution(List<int> numbers) {
-  // Gibt eine einfache Häufigkeitsverteilung aus
-  // z.B. wie oft kommt jede Zahl vor
+  for (int i = 0; i < numbers.length; i++) {
+    for (int j = 0; j < numbers.length; j++) {
+      int oftZahl = 1;
+      if (numbers[i] == numbers[j]) { 
+        oftZahl++;
+    }
+    print("${numbers[i]} kommt $oftZahl mal vor");
+  }
+  }
 }
 
 // Hauptfunktion:
-void analyzeNumbers(List<int> numbers) {
   // Ruft alle Funktionen der Reihe nach auf
   // Gibt eine übersichtliche Gesamtanalyse
+void analyzeNumbers(List<int> numbers) {
+  findAndPrintExtreme(numbers);
+  printNumberTypes(numbers);
+  printDistribution(numbers);
+
+
+}
+void main() {
+  List<int> myNumbers = [5, 8, 7, 12, -8, 5, 7, 55, -556];
+
+  analyzeNumbers(myNumbers);
+
 }
