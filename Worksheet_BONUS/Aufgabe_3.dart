@@ -61,15 +61,16 @@ void printNumberTypes(List<int> numbers) {
 // Gibt eine einfache Häufigkeitsverteilung aus
 // z.B. wie oft kommt jede Zahl vor
 void printDistribution(List<int> numbers) {
-  for (int i = 0; i < numbers.length; i++) {
-    for (int j = 0; j < numbers.length; j++) {
-      int oftZahl = 1;
-      if (numbers[i] == numbers[j]) { 
-        oftZahl++;
-    }
-    print("${numbers[i]} kommt $oftZahl mal vor");
+  Map<int, int> numbersFrequency = {};
+
+  for (int number in numbers) {
+    numbersFrequency[number] = (numbersFrequency[number] ?? 0) + 1; // Prüft ob die Zahl schon in der Mappe ist und wenn nicht, fügt sie in die Mappe als Key hinzu und gibt ein Value von 1.
+                                                                    // Wenn die Zahl schon in der Mappe ist, wird der Wert von 1 erhöht. 
   }
-  }
+
+  numbersFrequency.forEach((number, frequency) {
+    print('$number kommt $frequency mal vor');
+  });
 }
 
 // Hauptfunktion:
