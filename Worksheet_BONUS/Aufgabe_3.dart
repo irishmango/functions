@@ -64,8 +64,9 @@ void printDistribution(List<int> numbers) {
   Map<int, int> numbersFrequency = {};
 
   for (int number in numbers) {
-    numbersFrequency[number] = (numbersFrequency[number] ?? 0) + 1; // Prüft ob die Zahl schon in der Mappe ist und wenn nicht, fügt sie in die Mappe als Key hinzu und gibt ein Value von 1.
-                                                                    // Wenn die Zahl schon in der Mappe ist, wird der Wert von 1 erhöht. 
+    numbersFrequency[number] = (numbersFrequency[number] ?? 0) + 1; // Prüft, ob die Zahl bereits in der Map vorhanden ist.
+                                                                    // Wenn nicht, wird sie als Key mit dem Wert 0 angenommen und anschließend um 1 erhöht.
+                                                                    // Wenn die Zahl (Key) schon in der Map existiert, wird ihr Wert um 1 erhöht.     
   }
 
   numbersFrequency.forEach((number, frequency) {
